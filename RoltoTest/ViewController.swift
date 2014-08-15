@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var targetImage: UIImageView!
                             
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,5 +22,27 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func printTarget(sender: AnyObject) {
+        let dicover = RoltoPrintDiscover()
+        dicover.searchPrintersWithCallback(
+            { (var print) in
+                self.performPrint(print)
+            }
+            , comletion: {}, duration: 3)
+    }
+    
+    
+    func performPrint(_print:RoltoPrint) -> Void{
+        var _params = [
+            RoltoPrintParameterBlockSize:0.7,
+            RoltoPrintParameterBinarizationOffset:0.05,
+            RoltoPrintParameterErrorDiffusion:false
+        ]
+        _print.performPrintImage(
+            targetImage.image,
+            params: _params,
+            completion: {(var result:RoltoPrintResult) in })
+    }
+    
 }
 

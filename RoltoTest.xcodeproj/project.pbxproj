@@ -12,6 +12,8 @@
 		CCD7B87C199E55F300834A60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCD7B87A199E55F300834A60 /* Main.storyboard */; };
 		CCD7B87E199E55F300834A60 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCD7B87D199E55F300834A60 /* Images.xcassets */; };
 		CCD7B88A199E55F300834A60 /* RoltoTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7B889199E55F300834A60 /* RoltoTestTests.swift */; };
+		CCD7B896199E562800834A60 /* libRolto-PrintSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD7B894199E562800834A60 /* libRolto-PrintSDK.a */; };
+		CCD7B899199E58D100834A60 /* rappa_400x300.png in Resources */ = {isa = PBXBuildFile; fileRef = CCD7B898199E58D100834A60 /* rappa_400x300.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,10 @@
 		CCD7B883199E55F300834A60 /* RoltoTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoltoTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD7B888199E55F300834A60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCD7B889199E55F300834A60 /* RoltoTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoltoTestTests.swift; sourceTree = "<group>"; };
+		CCD7B894199E562800834A60 /* libRolto-PrintSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libRolto-PrintSDK.a"; sourceTree = "<group>"; };
+		CCD7B895199E562800834A60 /* RoltoPrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoltoPrint.h; sourceTree = "<group>"; };
+		CCD7B897199E570100834A60 /* RoltoTest-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RoltoTest-Bridging-Header.h"; sourceTree = "<group>"; };
+		CCD7B898199E58D100834A60 /* rappa_400x300.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rappa_400x300.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCD7B896199E562800834A60 /* libRolto-PrintSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,11 +82,13 @@
 		CCD7B873199E55F300834A60 /* RoltoTest */ = {
 			isa = PBXGroup;
 			children = (
+				CCD7B893199E562800834A60 /* Lib */,
 				CCD7B876199E55F300834A60 /* AppDelegate.swift */,
 				CCD7B878199E55F300834A60 /* ViewController.swift */,
 				CCD7B87A199E55F300834A60 /* Main.storyboard */,
 				CCD7B87D199E55F300834A60 /* Images.xcassets */,
 				CCD7B874199E55F300834A60 /* Supporting Files */,
+				CCD7B897199E570100834A60 /* RoltoTest-Bridging-Header.h */,
 			);
 			path = RoltoTest;
 			sourceTree = "<group>";
@@ -87,6 +96,7 @@
 		CCD7B874199E55F300834A60 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CCD7B898199E58D100834A60 /* rappa_400x300.png */,
 				CCD7B875199E55F300834A60 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -108,6 +118,16 @@
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
+		};
+		CCD7B893199E562800834A60 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				CCD7B894199E562800834A60 /* libRolto-PrintSDK.a */,
+				CCD7B895199E562800834A60 /* RoltoPrint.h */,
+			);
+			name = Lib;
+			path = "Rolto SDK_V100/Lib";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -191,6 +211,7 @@
 			files = (
 				CCD7B87C199E55F300834A60 /* Main.storyboard in Resources */,
 				CCD7B87E199E55F300834A60 /* Images.xcassets in Resources */,
+				CCD7B899199E58D100834A60 /* rappa_400x300.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,7 +348,13 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = RoltoTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Rolto",
+					SDK_V100/Lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT)/RoltoTest-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -338,7 +365,13 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = RoltoTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Rolto",
+					SDK_V100/Lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT)/RoltoTest-Bridging-Header.h";
 			};
 			name = Release;
 		};
